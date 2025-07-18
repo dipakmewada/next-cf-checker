@@ -1,7 +1,13 @@
 
 // Extend the CloudflareEnv type to include API_DATA
 
-async function fetchData() {
+type ApiDataItem = {
+  id: number;
+  title: string;
+  body: string;
+};
+
+async function fetchData(): Promise<ApiDataItem[]> {
   const apiUrl = process.env.NEXT_PUBLIC_API_DATA;
   if (!apiUrl) {
     throw new Error("NEXT_PUBLIC_API_DATA environment variable is not defined");
@@ -15,7 +21,7 @@ async function fetchData() {
   }
 
   const jsonData = await res.json();
-  return jsonData;
+  return jsonData as ApiDataItem[];
 }
 
 export default async function SimpleSSRComponent() {
