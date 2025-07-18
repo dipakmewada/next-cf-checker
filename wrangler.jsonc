@@ -14,5 +14,8 @@
   "observability": {
     "enabled": true
   },
+  "vars": {
+    "NEXT_PUBLIC_API_DATA": "https://jsonplaceholder.typicode.com/posts"
+  },
   "upload_source_maps": true
 }
